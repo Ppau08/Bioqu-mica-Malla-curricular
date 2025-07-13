@@ -1,54 +1,70 @@
 const materias = [
   {
     nombre: "Química General",
-    categoria: "basicas",
     año: 1,
     cuatrimestre: 1,
     correlativas: [],
   },
   {
     nombre: "Álgebra y Geometría Analítica",
-    categoria: "exactas",
     año: 1,
     cuatrimestre: 1,
     correlativas: [],
   },
   {
     nombre: "Cálculo Diferencial e Integral",
-    categoria: "exactas",
     año: 1,
-    cuatrimestre: 1,
+    cuatrimestre: 2,
     correlativas: [],
   },
   {
     nombre: "Biología General y Celular",
-    categoria: "biologicas",
     año: 1,
-    cuatrimestre: 1,
+    cuatrimestre: 2,
     correlativas: [],
   },
   {
     nombre: "Química Inorgánica",
-    categoria: "basicas",
     año: 1,
     cuatrimestre: 2,
     correlativas: ["Química General"],
   },
   {
     nombre: "Mecánica, Calor y Termodinámica",
-    categoria: "exactas",
-    año: 1,
-    cuatrimestre: 2,
+    año: 2,
+    cuatrimestre: 1,
     correlativas: ["Álgebra y Geometría Analítica"],
   },
   {
     nombre: "Morfología",
-    categoria: "biologicas",
-    año: 1,
-    cuatrimestre: 2,
+    año: 2,
+    cuatrimestre: 1,
     correlativas: ["Biología General y Celular"],
-  }
-];
+  },
+{
+  nombre: "Química Orgánica I",
+  año: 2,
+  cuatrimestre: 1,
+  correlativas: ["Física Biológica"]
+},
+{
+  nombre: "Electricidad, Magnet, Óptica y Sonido",
+  año: 2,
+  cuatrimestre: 2,
+  correlativas: ["Fisiología"]
+},
+  {
+  nombre: "Química Orgánica II",
+  año: 2,
+  cuatrimestre: 2,
+  correlativas: ["Fisiología"]
+},
+  {
+  nombre: "Química Analítica",
+  año: 2,
+  cuatrimestre: 2,
+  correlativas: ["Fisiología"]
+},
 
 const estados = {}; // Guardamos estado de materias
 

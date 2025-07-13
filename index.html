@@ -1,14 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Interactiva</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Curricular - Bioquímica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .year-column {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 15%;
+      margin: 10px;
+      min-width: 180px;
+    }
+
+    .cuatrimestre {
+      border-top: 3px solid #ccc;
+      padding: 10px;
+    }
+
+    .cuatrimestre h3 {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .materia {
+      background-color: white;
+      border: 2px solid #aaa;
+      border-radius: 8px;
+      margin: 8px 0;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .materia.estado-1 {
+      background-color: #d1e7dd;
+    }
+
+    .materia.estado-2 {
+      background-color: #a5c2b3;
+      text-decoration: line-through;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-  <h1>Malla Interactiva por Años</h1>
-  <div id="malla-grid" class="malla-grid"></div>
-  <script src="script.js"></script>
+  <h1>Malla Curricular - Bioquímica</h1>
+  <div class="container">
+    <!-- Año 1 -->
+    <div class="year-column">
+      <div class="cuatrimestre">
+        <h3>1º semestre</h3>
+        <div class="materia">Introducción a la Biología Celular y Molecular</div>
+        <div class="materia">Introducción a la Bioquímica</div>
+        <div class="materia">Salud y Humanidades I</div>
+        <div class="materia">Aprendizaje en Terreno I</div>
+      </div>
+      <div class="cuatrimestre">
+        <h3>2º semestre</h3>
+        <div class="materia">Biología Celular y Molecular</div>
+        <div class="materia">Química General</div>
+        <div class="materia">Matemática</div>
+        <div class="materia">Aprendizaje en Terreno II</div>
+      </div>
+    </div>
+
+    <!-- Faltan años 2 al 6 -->
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.materia').forEach(m => {
+      m.addEventListener('click', () => {
+        if (m.classList.contains('estado-2')) {
+          m.classList.remove('estado-2');
+        } else if (m.classList.contains('estado-1')) {
+          m.classList.remove('estado-1');
+          m.classList.add('estado-2');
+        } else {
+          m.classList.add('estado-1');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -28,43 +28,6 @@ const materias = [
     año: 1,
     cuatrimestre: 2,
     correlativas: ["Química General"],
-  },
-  // Año 2
-  {
-    nombre: "Mecánica, Calor y Termodinámica",
-    año: 2,
-    cuatrimestre: 1,
-    correlativas: ["Álgebra y Geometría Analítica"],
-  },
-  {
-    nombre: "Morfología",
-    año: 2,
-    cuatrimestre: 1,
-    correlativas: ["Biología General y Celular"],
-  },
-  {
-    nombre: "Química Orgánica I",
-    año: 2,
-    cuatrimestre: 1,
-    correlativas: ["Física Biológica"]
-  },
-  {
-    nombre: "Electricidad, Magnet, Óptica y Sonido",
-    año: 2,
-    cuatrimestre: 2,
-    correlativas: ["Fisiología"]
-  },
-    {
-    nombre: "Química Orgánica II",
-    año: 2,
-    cuatrimestre: 2,
-    correlativas: ["Fisiología"]
-  },
-    {
-    nombre: "Química Analítica",
-    año: 2,
-    cuatrimestre: 2,
-    correlativas: ["Fisiología"]
   }
 
 const estados = {}; // Guardamos estado de materias

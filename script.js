@@ -29,6 +29,7 @@ const materias = [
     cuatrimestre: 2,
     correlativas: ["Química General"],
   },
+  // Año 2
   {
     nombre: "Mecánica, Calor y Termodinámica",
     año: 2,
@@ -64,7 +65,7 @@ const materias = [
     año: 2,
     cuatrimestre: 2,
     correlativas: ["Fisiología"]
-  },
+  }
 
 const estados = {}; // Guardamos estado de materias
 

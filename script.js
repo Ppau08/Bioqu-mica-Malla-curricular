@@ -1,43 +1,109 @@
-async function initMalla() {
-  const data = await fetch('./data/data_CARR.json').then(res => res.json());
-  const colors = await fetch('./data/colors_CARR.json').then(res => res.json());
+const materias = [
+  {
+    nombre: "Química General",
+    categoria: "basicas",
+    año: 1,
+    cuatrimestre: 1,
+    correlativas: [],
+  },
+  {
+    nombre: "Álgebra y Geometría Analítica",
+    categoria: "exactas",
+    año: 1,
+    cuatrimestre: 1,
+    correlativas: [],
+  },
+  {
+    nombre: "Cálculo Diferencial e Integral",
+    categoria: "exactas",
+    año: 1,
+    cuatrimestre: 1,
+    correlativas: [],
+  },
+  {
+    nombre: "Biología General y Celular",
+    categoria: "biologicas",
+    año: 1,
+    cuatrimestre: 1,
+    correlativas: [],
+  },
+  {
+    nombre: "Química Inorgánica",
+    categoria: "basicas",
+    año: 1,
+    cuatrimestre: 2,
+    correlativas: ["Química General"],
+  },
+  {
+    nombre: "Mecánica, Calor y Termodinámica",
+    categoria: "exactas",
+    año: 1,
+    cuatrimestre: 2,
+    correlativas: ["Álgebra y Geometría Analítica"],
+  },
+  {
+    nombre: "Morfología",
+    categoria: "biologicas",
+    año: 1,
+    cuatrimestre: 2,
+    correlativas: ["Biología General y Celular"],
+  }
+];
 
-  const header = document.querySelector('.malla-header');
-  const body = document.querySelector('.malla-body');
+const estados = {}; // Guardamos estado de materias
 
-  const semestres = Object.keys(data).sort();
-
-  // Cabeceras
-  semestres.forEach(s => {
-    const col = document.createElement('div');
-    col.className = 'semestre-col';
-    col.innerText = `Sem ${s.slice(1)}`;
-    header.appendChild(col);
-  });
-
-  // Ramos
-  semestres.forEach(s => {
-    data[s].forEach(r => {
-      const [nombre, sigla, crUSM, crSCT, cat, prereq, paridad] = r;
-      const div = document.createElement('div');
-      div.className = `ramo-cell cat-${cat}`;
-      div.dataset.prereq = prereq.length > 0 ? prereq.join(',') : '';
-      div.innerHTML = `<strong>${sigla}</strong>${nombre}`;
-      body.appendChild(div);
-    });
-  });
-
-  // Filtros
-  document.querySelectorAll('button[data-filter]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      document.querySelectorAll('.ramo-cell').forEach(c => {
-        if (f === 'all') c.style.display = 'block';
-        else if (f === 'prereq') c.style.display = c.dataset.prereq ? 'block' : 'none';
-        else if (f === 'by-cat') c.style.display = c.classList.contains('cat-LAB') ? 'block' : 'none'; // cambiar por lógica deseada
-      });
-    });
-  });
+function toggleEstado(materia) {
+  const estadoActual = estados[materia.nombre];
+  if (!estadoActual) {
+    estados[materia.nombre] = "regularizada";
+  } else if (estadoActual === "regularizada") {
+    estados[materia.nombre] = "aprobada";
+  } else {
+    delete estados[materia.nombre];
+  }
+  renderMalla();
 }
 
-initMalla();
+function renderMalla() {
+  const contenedor = document.getElementById("malla-grid");
+  contenedor.innerHTML = "";
+
+  const maxAño = Math.max(...materias.map(m => m.año));
+
+  for (let año = 1; año <= maxAño; año++) {
+    const divAño = document.createElement("div");
+    divAño.className = "columna-año";
+    divAño.innerHTML = `<h2>Año ${año}</h2>`;
+
+    for (let cuatri = 1; cuatri <= 2; cuatri++) {
+      const divCuatri = document.createElement("div");
+      divCuatri.className = "cuatrimestre";
+      divCuatri.innerHTML = `<h3>${cuatri}º Cuatrimestre</h3>`;
+
+      materias
+        .filter(m => m.año === año && m.cuatrimestre === cuatri)
+        .forEach(m => {
+          const divMateria = document.createElement("div");
+          divMateria.className = `materia ${m.categoria}`;
+          divMateria.textContent = m.nombre;
+          divMateria.dataset.nombre = m.nombre;
+
+          if (estados[m.nombre] === "regularizada") {
+            divMateria.classList.add("regularizada");
+          }
+          if (estados[m.nombre] === "aprobada") {
+            divMateria.classList.add("aprobada");
+          }
+
+          divMateria.onclick = () => toggleEstado(m);
+          divCuatri.appendChild(divMateria);
+        });
+
+      divAño.appendChild(divCuatri);
+    }
+
+    contenedor.appendChild(divAño);
+  }
+}
+
+renderMalla();

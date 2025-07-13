@@ -1,11 +1,11 @@
 body {
   font-family: serif;
-  padding: 20px;
+  padding: 30px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .malla-grid {
@@ -16,7 +16,7 @@ h1 {
 }
 
 .columna-año {
-  background-color: #faf1eb;
+  background-color: #fff9f5;
   border-radius: 8px;
   padding: 10px;
   width: 220px;
@@ -32,8 +32,8 @@ h1 {
 }
 
 .cuatrimestre {
-  background-color: #d18ab6;
-  border: 1px solid #a32e76;
+  background-color: #e3b8d3;
+  border: 1px solid #94356f;
   border-radius: 6px;
   padding: 10px;
 }
@@ -51,12 +51,8 @@ h1 {
   cursor: pointer;
   font-size: 13px;
   text-align: center;
-  background-color: #faf1eb;
+  background-color: #fff9f5;
 }
-
-.materia.basicas { background-color: #BBDEFB; }
-.materia.exactas { background-color: #C8E6C9; }
-.materia.biologicas { background-color: #FFE0B2; }
 
 .materia.regularizada {
   filter: brightness(1.1);

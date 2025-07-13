@@ -41,30 +41,30 @@ const materias = [
     cuatrimestre: 1,
     correlativas: ["Biología General y Celular"],
   },
-{
-  nombre: "Química Orgánica I",
-  año: 2,
-  cuatrimestre: 1,
-  correlativas: ["Física Biológica"]
-},
-{
-  nombre: "Electricidad, Magnet, Óptica y Sonido",
-  año: 2,
-  cuatrimestre: 2,
-  correlativas: ["Fisiología"]
-},
   {
-  nombre: "Química Orgánica II",
-  año: 2,
-  cuatrimestre: 2,
-  correlativas: ["Fisiología"]
-},
+    nombre: "Química Orgánica I",
+    año: 2,
+    cuatrimestre: 1,
+    correlativas: ["Física Biológica"]
+  },
   {
-  nombre: "Química Analítica",
-  año: 2,
-  cuatrimestre: 2,
-  correlativas: ["Fisiología"]
-},
+    nombre: "Electricidad, Magnet, Óptica y Sonido",
+    año: 2,
+    cuatrimestre: 2,
+    correlativas: ["Fisiología"]
+  },
+    {
+    nombre: "Química Orgánica II",
+    año: 2,
+    cuatrimestre: 2,
+    correlativas: ["Fisiología"]
+  },
+    {
+    nombre: "Química Analítica",
+    año: 2,
+    cuatrimestre: 2,
+    correlativas: ["Fisiología"]
+  },
 
 const estados = {}; // Guardamos estado de materias
 

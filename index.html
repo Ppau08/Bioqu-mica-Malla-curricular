@@ -1,205 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Curricular - Bioquímica</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Bioquímica Interactiva</title>
   <style>
     body {
-      font-family: serif;
-      background-color: #f7f7f7;
-      padding: 20px;
       margin: 0;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .container {
+      font-family: sans-serif;
+      background-color: #111;
+      color: #fff;
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      flex-direction: row;
+      overflow-x: auto;
     }
-
-    .year-column {
-      background-color: #ad789f;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      width: 15%;
-      margin: 10px;
-      min-width: 180px;
+    .anio {
+      flex: 0 0 16.6%;
+      padding: 1rem;
+      box-sizing: border-box;
+      border-right: 1px solid #444;
     }
-
-    .year-column h2 {
+    .anio h2 {
       text-align: center;
-      background-color: #82276a;
-      margin: 0;
-      padding: 10px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      font-size: 18px;
+      margin-bottom: 1rem;
     }
-
     .cuatrimestre {
-      border-top: 3px solid #f7f7f7;
-      padding: 10px;
+      background-color: #222;
+      border-radius: 15px;
+      padding: 1rem;
+      margin-bottom: 1rem;
     }
-
-    .cuatrimestre h3 {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 16px;
+    .cuatrimestre.verde {
+      border: 2px solid green;
     }
-
+    .cuatrimestre.rojo {
+      border: 2px solid red;
+    }
     .materia {
-      background-color: #f7f7f7;
-      border: 2px solid #f7f7f7;
-      border-radius: 8px;
-      margin: 8px 0;
-      padding: 12px;
+      background-color: gray;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
       text-align: center;
-      font-size: 14px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: 0.3s;
     }
-
-    .materia.estado-1 {
-      background-color: #e1f2d5;
+    .materia.desbloqueada {
+      background-color: white;
+      color: black;
     }
-
-    .materia.estado-2 {
-      background-color: #c1d4b4;
+    .materia.regularizada {
+      background-color: lightgreen;
+      color: black;
+    }
+    .materia.aprobada {
+      background-color: darkgreen;
+      color: white;
       text-decoration: line-through;
-      color: #444;
     }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular - Bioquímica</h1>
-  <div class="container">
-    <!-- Año 1 -->
-    <div class="year-column">
-      <h2>1º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Introducción a la Biología Celular y Molecular</div>
-        <div class="materia">Introducción a la Bioquímica</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Biología Celular y Molecular</div>
-        <div class="materia">Química General</div>
-        <div class="materia">Matemática</div>
-      </div>
-    </div>
-
-    <!-- Año 2 -->
-    <div class="year-column">
-      <h2>2º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Química Orgánica</div>
-        <div class="materia">Fisicoquímica I</div>
-        <div class="materia">Biología Molecular</div>
-        <div class="materia">Inglés I</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Fisicoquímica II</div>
-        <div class="materia">Microbiología</div>
-        <div class="materia">Química Biológica</div>
-        <div class="materia">Inglés II</div>
-      </div>
-    </div>
-
-    <!-- Año 3 -->
-    <div class="year-column">
-      <h2>3º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Farmacobotánica</div>
-        <div class="materia">Inmunología</div>
-        <div class="materia">Toxicología</div>
-        <div class="materia">Metodología de la Investigación Científica</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Parasitología</div>
-        <div class="materia">Bioquímica General</div>
-        <div class="materia">Fisiología</div>
-        <div class="materia">Genética</div>
-      </div>
-    </div>
-
-    <!-- Año 4 -->
-    <div class="year-column">
-      <h2>4º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Bioquímica Clínica I</div>
-        <div class="materia">Endocrinología</div>
-        <div class="materia">Farmacología</div>
-        <div class="materia">Prácticas de Laboratorio I</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Bioquímica Clínica II</div>
-        <div class="materia">Nutrición</div>
-        <div class="materia">Físico-Química Biológica</div>
-        <div class="materia">Prácticas de Laboratorio II</div>
-      </div>
-    </div>
-
-    <!-- Año 5 -->
-    <div class="year-column">
-      <h2>5º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Hematología</div>
-        <div class="materia">Microbiología Clínica</div>
-        <div class="materia">Inmunoquímica</div>
-        <div class="materia">Prácticas Integradas I</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Toxicología Clínica</div>
-        <div class="materia">Análisis Clínicos</div>
-        <div class="materia">Prácticas Integradas II</div>
-        <div class="materia">Seminario Final</div>
-      </div>
-    </div>
-
-    <!-- Año 6 -->
-    <div class="year-column">
-      <h2>6º Año</h2>
-      <div class="cuatrimestre">
-        <h3>1º Cuatrimestre</h3>
-        <div class="materia">Rotación Profesional Supervisada I</div>
-        <div class="materia">Trabajo Final de Grado I</div>
-      </div>
-      <div class="cuatrimestre">
-        <h3>2º Cuatrimestre</h3>
-        <div class="materia">Rotación Profesional Supervisada II</div>
-        <div class="materia">Trabajo Final de Grado II</div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    document.querySelectorAll('.materia').forEach(m => {
-      m.addEventListener('click', () => {
-        if (m.classList.contains('estado-2')) {
-          m.classList.remove('estado-2');
-        } else if (m.classList.contains('estado-1')) {
-          m.classList.remove('estado-1');
-          m.classList.add('estado-2');
-        } else {
-          m.classList.add('estado-1');
-        }
+    const malla = [
+      {
+        anio: 1,
+        cuatrimestres: [
+          {
+            color: 'verde',
+            materias: [
+              { nombre: 'Álgebra y Geometría Analítica', id: 'algebra', correlativas: [] },
+              { nombre: 'Química General', id: 'quim_gen', correlativas: [] },
+            ]
+          },
+          {
+            color: 'rojo',
+            materias: [
+              { nombre: 'Cálculo Diferencial e Integral', id: 'calculo', correlativas: ['algebra'] },
+              { nombre: 'Química Inorgánica', id: 'quim_inorg', correlativas: ['quim_gen'] },
+              { nombre: 'Biología General y Celular', id: 'biologia', correlativas: ['quim_gen'] },
+            ]
+          }
+        ]
+      },
+      // Resto de años se agregan similar
+    ];
+
+    const estadoMaterias = {};
+
+    function crearMalla() {
+      malla.forEach(anio => {
+        const col = document.createElement('div');
+        col.className = 'anio';
+        col.innerHTML = `<h2>${anio.anio}°</h2>`;
+
+        anio.cuatrimestres.forEach(cuat => {
+          const cuatDiv = document.createElement('div');
+          cuatDiv.className = `cuatrimestre ${cuat.color}`;
+
+          cuat.materias.forEach(mat => {
+            const matDiv = document.createElement('div');
+            matDiv.className = 'materia bloqueada';
+            matDiv.innerText = mat.nombre;
+            matDiv.dataset.id = mat.id;
+            matDiv.addEventListener('click', () => cambiarEstado(matDiv));
+            estadoMaterias[mat.id] = 'bloqueada';
+            cuatDiv.appendChild(matDiv);
+          });
+
+          col.appendChild(cuatDiv);
+        });
+
+        document.body.appendChild(col);
       });
-    });
+
+      actualizarEstados();
+    }
+
+    function cambiarEstado(div) {
+      const id = div.dataset.id;
+      let estado = estadoMaterias[id];
+
+      if (estado === 'bloqueada') return;
+      else if (estado === 'desbloqueada') estadoMaterias[id] = 'regularizada';
+      else if (estado === 'regularizada') estadoMaterias[id] = 'aprobada';
+      else estadoMaterias[id] = 'desbloqueada';
+
+      actualizarEstados();
+    }
+
+    function actualizarEstados() {
+      document.querySelectorAll('.materia').forEach(div => {
+        const id = div.dataset.id;
+        div.className = 'materia ' + estadoMaterias[id];
+      });
+
+      desbloquearMaterias();
+    }
+
+    function desbloquearMaterias() {
+      malla.forEach(anio => {
+        anio.cuatrimestres.forEach(cuat => {
+          cuat.materias.forEach(mat => {
+            if (estadoMaterias[mat.id] === 'bloqueada') {
+              const puede = mat.correlativas.every(c => estadoMaterias[c] === 'regularizada' || estadoMaterias[c] === 'aprobada');
+              if (puede) estadoMaterias[mat.id] = 'desbloqueada';
+            }
+          });
+        });
+      });
+    }
+
+    crearMalla();
   </script>
 </body>
 </html>
+

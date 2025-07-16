@@ -70,7 +70,7 @@
     }
 
     .espera {
-      background-color: #E5C7D6;
+      background-color: ##bda4b0;
       cursor: default;
       pointer-events: none;
     }
@@ -136,7 +136,7 @@
       { id: "electricidad", nombre: "Electricidad, Magnetismo, Óptica y Sonido", regulariza: ["mecanica"], aprueba: ["algebra"], anio: 2, cuatri: 2 },
       { id: "organica2", nombre: "Química Orgánica II", regulariza: ["organica1"], aprueba: ["quimica_inorganica"], anio: 2, cuatri: 2 },
       { id: "analitica", nombre: "Química Analítica", regulariza: ["calculo"], aprueba: ["algebra", "quimica_inorganica"], anio: 2, cuatri: 2 },
-      { id: "traduccion", nombre: "Prueba de Traducción", regulariza: [], aprueba: [], anio: 2, cuatri: 2 },
+      { id: "traduccion", nombre: "Prueba de Traducción", regulariza: [], aprueba: ["algebra", "quimica_general", "calculo", "quimica_inorganica", "biologia"], anio: 2, cuatri: 2 },
       // Año 3
       { id: "biologica1", nombre: "Química Biológica I", regulariza: ["mecanica", "analitica", "organica2"], aprueba: ["organica1", "traduccion"], anio: 3, cuatri: 1 },
       { id: "fisica_bio", nombre: "Química Física Biológica", regulariza: ["analitica", "organica2"], aprueba: ["mecanica","traduccion"], anio: 3, cuatri: 1 },

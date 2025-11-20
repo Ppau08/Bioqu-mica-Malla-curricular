@@ -198,20 +198,23 @@
     }
 
     document.querySelectorAll(".materia").forEach(m => {
-      m.addEventListener("click", () => {
-        if (m.classList.contains("espera")) return;
+  m.addEventListener("click", () => {
+    if (m.classList.contains("espera")) return;
 
-        if (m.classList.contains("estado-2")) {
-          m.classList.remove("estado-2");
-        } else if (m.classList.contains("estado-1")) {
-          m.classList.remove("estado-1");
-          m.classList.add("estado-2");
-        } else {
-          m.classList.add("estado-1");
-        }
-        actualizarHabilitaciones();
-      });
-    });
+    if (m.classList.contains("estado-2")) {
+      m.classList.remove("estado-2");
+    } else if (m.classList.contains("estado-1")) {
+      m.classList.remove("estado-1");
+      m.classList.add("estado-2");
+    } else {
+      m.classList.add("estado-1");
+    }
+
+    guardarProgreso();  // <-- NUEVO
+    actualizarHabilitaciones();
+  });
+});
+
 
     actualizarHabilitaciones();
   </script>

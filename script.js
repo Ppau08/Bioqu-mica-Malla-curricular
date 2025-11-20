@@ -1,89 +1,43 @@
-const materias = [
-  {
-    nombre: "Química General",
-    año: 1,
-    cuatrimestre: 1,
-    correlativas: [],
-  },
-  {
-    nombre: "Álgebra y Geometría Analítica",
-    año: 1,
-    cuatrimestre: 1,
-    correlativas: [],
-  },
-  {
-    nombre: "Cálculo Diferencial e Integral",
-    año: 1,
-    cuatrimestre: 2,
-    correlativas: [],
-  },
-  {
-    nombre: "Biología General y Celular",
-    año: 1,
-    cuatrimestre: 2,
-    correlativas: [],
-  },
-  {
-    nombre: "Química Inorgánica",
-    año: 1,
-    cuatrimestre: 2,
-    correlativas: ["Química General"],
-  }
+// --- CARGAR PROGRESO ---
+function cargarProgreso() {
+  const guardado = localStorage.getItem("progresoMaterias");
+  if (!guardado) return;
 
-const estados = {}; // Guardamos estado de materias
+  const estados = JSON.parse(guardado);
 
-function toggleEstado(materia) {
-  const estadoActual = estados[materia.nombre];
-  if (!estadoActual) {
-    estados[materia.nombre] = "regularizada";
-  } else if (estadoActual === "regularizada") {
-    estados[materia.nombre] = "aprobada";
-  } else {
-    delete estados[materia.nombre];
-  }
-  renderMalla();
-}
+  Object.keys(estados).forEach(id => {
+    const div = document.getElementById(id);
+    if (!div) return;
 
-function renderMalla() {
-  const contenedor = document.getElementById("malla-grid");
-  contenedor.innerHTML = "";
+    div.classList.remove("estado-1", "estado-2");
 
-  const maxAño = Math.max(...materias.map(m => m.año));
-
-  for (let año = 1; año <= maxAño; año++) {
-    const divAño = document.createElement("div");
-    divAño.className = "columna-año";
-    divAño.innerHTML = `<h2>Año ${año}</h2>`;
-
-    for (let cuatri = 1; cuatri <= 2; cuatri++) {
-      const divCuatri = document.createElement("div");
-      divCuatri.className = "cuatrimestre";
-      divCuatri.innerHTML = `<h3>${cuatri}º Cuatrimestre</h3>`;
-
-      materias
-        .filter(m => m.año === año && m.cuatrimestre === cuatri)
-        .forEach(m => {
-          const divMateria = document.createElement("div");
-          divMateria.className = `materia ${m.categoria}`;
-          divMateria.textContent = m.nombre;
-          divMateria.dataset.nombre = m.nombre;
-
-          if (estados[m.nombre] === "regularizada") {
-            divMateria.classList.add("regularizada");
-          }
-          if (estados[m.nombre] === "aprobada") {
-            divMateria.classList.add("aprobada");
-          }
-
-          divMateria.onclick = () => toggleEstado(m);
-          divCuatri.appendChild(divMateria);
-        });
-
-      divAño.appendChild(divCuatri);
+    if (estados[id] === 1) {
+      div.classList.add("estado-1");
+    } else if (estados[id] === 2) {
+      div.classList.add("estado-2");
     }
-
-    contenedor.appendChild(divAño);
-  }
+  });
 }
 
-renderMalla();
+// --- GUARDAR PROGRESO ---
+function guardarProgreso() {
+  const estados = {};
+
+  document.querySelectorAll(".materia").forEach(m => {
+    if (m.classList.contains("estado-2")) {
+      estados[m.id] = 2;
+    } else if (m.classList.contains("estado-1")) {
+      estados[m.id] = 1;
+    } else {
+      estados[m.id] = 0;
+    }
+  });
+
+  localStorage.setItem("progresoMaterias", JSON.stringify(estados));
+}
+
+// --- CARGAR AUTOMÁTICAMENTE AL ENTRAR ---
+document.addEventListener("DOMContentLoaded", () => {
+  cargarProgreso();
+  actualizarHabilitaciones();
+});
